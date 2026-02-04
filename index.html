@@ -3,6 +3,8 @@
 <head>
     <meta name="monetag" content="4c053afe9c5c772c576dc76deca3791a">
 
+    <script>(function(s){s.dataset.zone='10563700',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
     <script>(function(s){s.dataset.zone='10564190',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
     <script src="https://quge5.com/88/tag.min.js" data-zone="208338" async data-cfasync="false"></script>
@@ -16,44 +18,19 @@
     <style>
         :root { --neon-pink: #ff71ce; --neon-blue: #01cdfe; --dark-bg: #050112; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--dark-bg); color: white; margin: 0; overflow-x: hidden; text-transform: capitalize; }
-
-        /* الجزء العلوي الثابت */
         .top-static { display: flex; justify-content: center; gap: 30px; padding: 20px; }
         .neon-ring { width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue); overflow: hidden; }
         .neon-ring img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* الاسم والحبال النيون */
         .mido-container { position: relative; display: flex; flex-direction: column; align-items: center; margin-top: 10px; }
         .neon-rope { width: 3px; height: 50px; background: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue); }
-        .mido-logo {
-            font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: white; 
-            text-shadow: 0 0 25px var(--neon-pink), 0 0 10px var(--neon-pink);
-            animation: swing 3s ease-in-out infinite alternate; transform-origin: top center;
-        }
+        .mido-logo { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: white; text-shadow: 0 0 25px var(--neon-pink); animation: swing 3s ease-in-out infinite alternate; transform-origin: top center; }
         @keyframes swing { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
-
-        /* زر التلجرام النيون الدوار */
-        .tg-neon {
-            width: 60px; height: 60px; border: 2px solid var(--neon-pink); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 25px;
-            color: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink);
-            margin: 20px auto; animation: rotate 5s linear infinite; text-decoration: none;
-        }
+        .tg-neon { width: 60px; height: 60px; border: 2px solid var(--neon-pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 25px; color: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); margin: 20px auto; animation: rotate 5s linear infinite; text-decoration: none; }
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* السلايدر (الترس اللانهائي) مع الضبابية والتكبير */
         .infinite-slider { display: flex; overflow-x: auto; gap: 30px; padding: 60px 20px; scroll-behavior: smooth; scrollbar-width: none; align-items: center; }
-        .art-card { 
-            min-width: 280px; transition: 0.5s; filter: blur(4px); transform: scale(0.85); position: relative; 
-            box-shadow: 0 0 0 var(--neon-blue); /* لمعان خلفي مطفأ افتراضياً */
-        }
-        /* تأثير الصورة الواحدة البارزة (التي يتم الوقوف عليها) */
-        .art-card:hover { 
-            filter: blur(0); transform: scale(1.1); z-index: 50; 
-            box-shadow: 0 0 30px var(--neon-blue); /* اللمعان النيون الخلفي عند التكبير */
-        }
+        .art-card { min-width: 280px; transition: 0.5s; filter: blur(4px); transform: scale(0.85); position: relative; }
+        .art-card:hover { filter: blur(0); transform: scale(1.1); z-index: 50; box-shadow: 0 0 30px var(--neon-blue); }
         .art-card img { width: 100%; height: 400px; border-radius: 25px; border: 2px solid var(--neon-blue); object-fit: cover; }
-
         .btn-down { background: var(--neon-pink); color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; margin-top: 15px; font-weight: 900; text-decoration: none; display: block; text-align: center; box-shadow: 0 0 10px var(--neon-pink); }
     </style>
 </head>
@@ -79,33 +56,40 @@
     <script>
         const galleryItems = [1,2,3,4,5,6,7,8,9,10];
         const slider = document.getElementById('slider');
-        // تكرار المصفوفة لعمل تأثير الترس اللانهائي
-        const fullGallery = [...galleryItems, ...galleryItems];
 
-        fullGallery.forEach((id, index) => {
-            const path = `led${id}.png`; 
+        galleryItems.forEach((id) => {
+            const path = `led${id}.png`;
+            // اختيار الجولد بناءً على رقم الصورة
+            const adFunction = (id <= 5) ? 'triggerGold1()' : 'triggerGold2()';
+            
             slider.innerHTML += `
                 <div class="art-card">
                     <img src="${path}">
                     <h3 style="text-align:center; margin-top:15px; font-size: 0.9rem;">Ai For You</h3>
-                    <a href="${path}" download="${path}" class="btn-down" onclick="triggerGold()">Free Download</a>
+                    <a href="${path}" download="${path}" class="btn-down" onclick="${adFunction}">Free Download</a>
                 </div>`;
         });
 
-        // حركة السلايدر اللانهائية
         slider.addEventListener('scroll', () => {
             if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth) { slider.scrollLeft = 1; }
         });
 
-        // وظيفة تشغيل إعلان الجولد الجديد (10564190) عند التحميل
-        function triggerGold() {
-            if (typeof window.show_10564190 === 'function') { window.show_10564190(); }
+        // تفعيل الجولد الأول (10563700)
+        function triggerGold1() {
+            if (typeof window.show_10563700 === 'function') { window.show_10563700(); }
+            else if(window.onclickTag) window.onclickTag();
         }
 
-        // إجبار ظهور الجولد الجديد عند أي ضغطة في أي مكان لزيادة الأرباح
-        document.addEventListener('click', function() {
+        // تفعيل الجولد الثاني (10564190)
+        function triggerGold2() {
             if (typeof window.show_10564190 === 'function') { window.show_10564190(); }
-        });
+            else if(window.onclickTag) window.onclickTag();
+        }
+
+        // عند الضغط في أي مكان عشوائي، شغل الجولد الثاني كزيادة ربح
+        document.addEventListener('click', function() {
+            triggerGold2();
+        }, {once: false});
     </script>
 </body>
 </html>
